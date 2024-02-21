@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-export default function AddTaskModal({ onSave, taskToUpdate }) {
+export default function AddTaskModal({ onSave, taskToUpdate, onCloseClick }) {
   const [task, setTask] = useState(
     taskToUpdate || {
       id: crypto.randomUUID(),
@@ -100,6 +100,12 @@ export default function AddTaskModal({ onSave, taskToUpdate }) {
             className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"
           >
             {isAdd ? "Add New Task" : "Edit Task"}
+          </button>
+          <button
+            onClick={onCloseClick}
+            className="rounded bg-red-600 px-4 py-2 ml-3 text-white transition-all hover:opacity-80"
+          >
+            Close
           </button>
         </div>
       </form>
