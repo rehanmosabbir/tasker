@@ -55,6 +55,13 @@ export default function TaskBoard() {
     setTaskToUpdate(null);
   }
 
+  function handleFavorite(taskId) {
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+    let newTask = [...tasks];
+    newTask[taskIndex].isFavorite = !newTask[taskIndex].isFavorite;
+    setTasks(newTask);
+  }
+
   return (
     <section className="mb-20" id="tasks">
       {showAddModal && (
@@ -77,6 +84,7 @@ export default function TaskBoard() {
             tasks={tasks}
             onEdit={handleEditTask}
             onDelete={handleDeleteTask}
+            onFav={handleFavorite}
           />
         </div>
       </div>
