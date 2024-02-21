@@ -1,7 +1,13 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-export default function SearchTask() {
+export default function SearchTask({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
+
+  function handleSearch(e) {
+    e.preventDefault();
+    onSearch(searchTerm);
+  }
   return (
     <form>
       <div className="flex">
@@ -17,6 +23,7 @@ export default function SearchTask() {
           />
           <button
             type="submit"
+            onClick={handleSearch}
             className="absolute right-2 top-0 h-full rounded-e-lg text-white md:right-4"
           >
             <svg
